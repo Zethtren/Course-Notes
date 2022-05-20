@@ -10,7 +10,7 @@ The flow of the notes.md will be chronological in this order.
 2. [CSS](./CSS/Notes.md)
 
 Due to the nature of HTML, CSS and Javascript building on top off of each other.
-I recommend following along in this order. 
+I recommend following along in this order.
 
 TODO I need to add all of the relevant links and pages to this page.
 
