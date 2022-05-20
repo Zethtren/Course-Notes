@@ -1,5 +1,5 @@
 # Course Notes
 
-## [Coursera](./Coursera/README.md)
+## [Coursera](./Coursera)
 
-[HTML, CSS, and Javascript for Web Development](./Coursera/Frontend/README.md)
+[HTML, CSS, and Javascript for Web Development](./Coursera/Frontend)
