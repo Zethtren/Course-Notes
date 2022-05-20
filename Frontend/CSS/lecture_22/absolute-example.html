@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Floating Elements</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            div {
+                background-color: blanchedalmond;
+                color: black;
+            }
+            p {
+                width: 50px;
+                height: 50px;
+                border: 2px solid black;
+                margin: 5px;
+            }
+            #p1 {
+                background-color: darkkhaki;
+                position: relative;
+                top: 55px;
+                left: 55px;
+            }
+            #p2 {
+                background-color: lightsalmon;
+            }
+            #p3 {
+                background-color: lightslategrey;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+            #p4 {
+                background-color: coral;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Box positioning</h1>
+        <div>
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <p id="p3"></p>
+            <p id="p4"></p>
+            <section>
+                This is a regular section continuing after the paragraph blocks.
+            </section>
+        </div>
+    </body>
+</html>

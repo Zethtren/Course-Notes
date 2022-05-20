@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Two Column Layout</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+
+            div {
+                background-color: bisque;
+            }
+            p {
+                width: 50%;
+                border: 1px solid black;
+                float: left;
+                color: black;
+                padding: 4px;
+            }
+            #p1 {
+                background-color: aquamarine;
+            }
+            #p2 {
+                background-color: darkseagreen;
+            }
+
+            section {
+                clear: left;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Two Column Design</h1>
+        <div>
+            <p id="p1">Lorem Ipsum Dolor Sit Amet.</p>
+            <p id="p2">Lorem Ipsum Dolor Sit Amet.</p>
+            <section>This is the background segment.</section>
+        </div>
+    </body>
+</html>

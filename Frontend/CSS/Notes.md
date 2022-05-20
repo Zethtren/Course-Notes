@@ -413,7 +413,7 @@ Default Layout Above -- Modified to show the values of each position Below
 Margins are cumulative for (Right + Left). For (Bottom + Top) the larger element
 wins.
 
-### Overflow
+### **Overflow**
 
 ```html
 <style>
@@ -430,3 +430,293 @@ the content size ends up being larger than the box containing it.
 * default is visible
 * hidden: clips at end of box
 * scroll: will provide a constant scroll bar even if there is no need
+
+### **Backgrounds**
+
+There are a number of background properties that can be used when coding CSS.
+"background-image: <>;" This will accept relative URLS when relative to the CSS
+file. You can also use an absolute path to a web url. Default behaviour is
+repeat. "background-repeat" will allow you to select only x or y repeat or
+"no-repeat". "background-position" can let you place the image in a relative
+position. It will default to center if only one axis is provided. you can also
+use the "background" property.
+
+```css
+#bg {
+    background: url('some.png') no-repeat right center;
+}
+```
+
+"background" when used this way will overwrite "background-color". You can
+simply tack a color in to specify a color.
+
+```css
+#bg{
+    background: url('some.png') no-repeat right center #0000FF;
+}
+```
+
+Background property is great for position elements based on screen-size.
+
+## **Positioning Schemes**
+
+### **Static**
+
+Default.
+
+### **Floating**
+
+Most modern web-pages are designed with floating. Floationg allows you to
+arrange items on the screen in any desired fashion. Floating is moved outside
+of the normal document context. If you do not "clear" your next non-floating
+element, then html will render that content behind your floating content.
+
+* [Floating](./lecture_21/floating.html)
+* [Two Column Design](./lecture_21/two-column-design.html)
+
+### **Relative**
+
+```css
+p {
+    position:   relative;
+    top:        50px;
+    left:       50px; /*This is measurement from the top left point */
+}
+```
+
+All offsets are measured to the nearest neighbor with non-static position.
+&lt;html> is the only element that is non-static by default. It is automatically
+rendered to "relative". Elements set to Absolute are removed from document flow.
+Items offest inside a container will inherit offsetting from the parent element
+If the parent element is shifted then the children will be shifted as well by
+the same amount.
+
+Some confusion can be caused in the case of sibling elements. In the example
+provided you can see that the html renderer still treats elements p2 - p4 as if
+element p1 was rendered in its original placement even though it has been
+shifted.
+
+[Relative Postioning Example](./lecture_22/relative-example.html)
+
+```css
+    * {
+        box-sizing: border-box;
+    }
+    div {
+        background-color: blanchedalmond;
+        color: black;
+    }
+    p {
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        margin: 5px;
+    }
+    #p1 {
+        background-color: darkkhaki;
+        position: relative;
+        top: 55px;
+        left: 55px;
+    }
+    #p2 {
+        background-color: lightsalmon;
+    }
+    #p3 {
+        background-color: lightslategrey;
+    }
+    #p4 {
+        background-color: coral;
+    }
+```
+
+### **Absolute**
+
+There are a few key concepts about Absolute positioning of Elements.
+
+* Elements will be placed based on the closest parent element with relative
+positioning. Which is &lt;html&gt; by default.
+* Setting an element to absolute will remove it from the page flow.
+  * Any sibling elements will ignore it in their positioning.
+
+Moving box 3 using absolute position will show a couple of unique problems.
+
+```css
+    * {
+        box-sizing: border-box;
+    }
+    div {
+        background-color: blanchedalmond;
+        color: black;
+    }
+    p {
+        width: 50px;
+        height: 50px;
+        border: 2px solid black;
+        margin: 5px;
+    }
+    #p1 {
+        background-color: darkkhaki;
+        position: relative;
+        top: 55px;
+        left: 55px;
+    }
+    #p2 {
+        background-color: lightsalmon;
+    }
+    #p3 {
+        background-color: lightslategrey;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    #p4 {
+        background-color: coral;
+    }
+```
+
+[Rendered Here](./lecture_22/absolute-example.html)
+
+As you can see the box p3 gets moved based on the &lt;html&gt; tag as opposed to
+the expected container as p1 did. On top of that, p4 will now render as if p3 is
+no longer there. Remember absolute elements are ignored in relative element
+placements. The absolute element will be rendered to the nearest parenting
+"relative positioned" element. Which by default is &lt;html&gt;. We can create a
+relative positioning argument for the containing div box and the behaviour will
+be closer to what is expected.
+
+[Updated Example](./lecture_22/absolute-container-example.html)
+
+```css
+    div#container {
+        position: relative;
+    }
+```
+
+```html
+<div id="container">
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <section>
+        This is a regular section continuing after the paragraph blocks.
+    </section>
+</div>
+```
+
+You can move this container as whole and all thew contained elements will move
+with it.
+
+```css
+    div#container {
+        position: relative;
+        top: 25px;
+    }
+```
+
+## **Responsive Design**
+
+### **Media Queries**
+
+Media queries allow for dynamically adjusting the style of a page based on
+attributes of the device used to view it. Media queries start with the key-word
+"@media" and "()". Attributes are evaluated within the parenthesis. If they
+evaluate to true, then the contents of the media query are applied to any
+contained elements.
+
+```css
+@media (max-width: 767px) {
+    p {
+        color: blue;
+    }
+}
+```
+
+Example query items include:
+
+* max-width (max-width: 800px)
+* min-width (min-width: 800px)
+* orientation (orientation: portrait)
+* screen
+* print
+
+Features can be combined using logical operators and additional parens
+
+```css
+@media (min-width: 768px) and (max-width: 991px) {...}
+@media (max-width: 768px) , (min-width: 991px) {...} 
+/* , represents or */
+```
+
+min and max width are always inclusive so it is advised to provide at least one
+value of difference when prepping multiple device styles.
+
+```css
+@media (min-width: 768px) and (max-width: 991px) {...}
+@media (min-width: 992px) {...} 
+/* If they were both set to 992 then both styles would be applied */
+/* This could have unexpected consequences and can be difficult to maintain*/
+```
+
+Sample of basic responsiveness can be seen here:\
+[Example Media Query](./lecture_23/media-queries.html)
+
+### **Responsive Design Layout**
+
+Born from the necessity to handle the growth of mobile devices for browsing the
+internet. Since late 2013 there are more mobile browsers than desktop browsers.
+Whenever possible it is best to design your website to respond to ALL devices.
+A responsive website is defined as such: "Site designed to adapt to the viewing
+environment by using fluid proportion-based grids, flexible images, and CSS3
+media queries". ***Yaakov Chaikin***
+[Link to source](https://www.coursera.org/learn/html-css-javascript-for-web-developers/lecture/Pfa75/lecture-24-part-1-responsive-design)
+at 1:28 timemark. Some parts of the site may be hidden when designing for mobile
+because ther emay not be enough space to display the content. The alternative is
+to use a server to identify devices and then serve different versions of the
+website by the server. This is no longer practical due to large variation in
+mobile device and desktops.
+
+Most responsive frameworks will use a 12 column grid because it easily divisible
+by 2, 3, 4, and 6 which should allow for most common design schemas. 1 column
+represents 8.33% of the page. It is also possible to nest another 12 column grid
+within any number individual or grouped columns of the main layout.
+
+[Example Responsive Design Layout](./lecture_24/responsive.html)
+
+### **Twitter Bootstrap**
+
+<span style="color: white; background-color: darkred">
+Bootstrap was designed by Twitter and is the most popular HTML, CSS and JS
+framework for designing responsive web-pages. Bootstrap is mostly CSS. Designing
+mobile first is the most common design paradigm. Unless the web-page would be
+too cluttered or impossible to use on mobile this is the recommended design.
+</span>
+
+<span style="color: white; background-color: darkred">
+The number one complaint for bootstrap is that is too bloated. You can download
+small portions of the bootstrap framework instead of the entire package.
+However, it is actually not *too* bloated and the entire package can be
+transported relatively easily.
+</span>
+
+<span style="color: white; background-color: darkred">
+For the time being I installed bootstrap via
+</span>
+
+```bash
+wget -o bootstrap.zip "https://github.com/twbs/bootstrap/releases/download/v3.4.1/bootstrap-3.4.1-dist.zip"
+unzip bootstrap-3.4.1-dist.zip
+```
+
+<span style="color: white; background-color: darkred">
+***This Course has been using Bootstrap 3 and doesn't appear to be compatible
+with bootstrap 5.x*** Because of this I will briefly detour to a youtube video
+and notate based on modern implementations.
+
+[Link to Youtube Video](https://www.youtube.com/watch?v=-qfEOE4vtxE)
+
+Currently Bootstrap is used in over 20% of websites (2021) and 71% of framework
+market share.
+
+Bootstrap is fast, responsive, has few dependencies now, is largely customizable
+and has a huge support community.
