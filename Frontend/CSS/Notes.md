@@ -686,21 +686,27 @@ within any number individual or grouped columns of the main layout.
 ### **Twitter Bootstrap**
 
 <span style="color: white; background-color: darkred">
+
 Bootstrap was designed by Twitter and is the most popular HTML, CSS and JS
 framework for designing responsive web-pages. Bootstrap is mostly CSS. Designing
 mobile first is the most common design paradigm. Unless the web-page would be
 too cluttered or impossible to use on mobile this is the recommended design.
+
 </span>
 
 <span style="color: white; background-color: darkred">
+
 The number one complaint for bootstrap is that is too bloated. You can download
 small portions of the bootstrap framework instead of the entire package.
 However, it is actually not *too* bloated and the entire package can be
 transported relatively easily.
+
 </span>
 
 <span style="color: white; background-color: darkred">
+
 For the time being I installed bootstrap via
+
 </span>
 
 ```bash
@@ -708,7 +714,6 @@ wget -o bootstrap.zip "https://github.com/twbs/bootstrap/releases/download/v3.4.
 unzip bootstrap-3.4.1-dist.zip
 ```
 
-<span style="color: white; background-color: darkred">
 ***This Course has been using Bootstrap 3 and doesn't appear to be compatible
 with bootstrap 5.x*** Because of this I will briefly detour to a youtube video
 and notate based on modern implementations.
