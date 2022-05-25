@@ -255,6 +255,6 @@ This is another benefit of using unique names across chapters and segments.
 
 $$\frac{(x+1)}{1}$$
 
-```markdown
+```latex
 $$\frac{(x+1)}{1}$$
 ```
