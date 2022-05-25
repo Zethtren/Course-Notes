@@ -4,6 +4,6 @@
 
 [HTML, CSS, and Javascript for Web Development](./Coursera/Frontend)
 
-## CheatSheets
+## [Cheat Sheets](./Cheatsheets/README.md)
 
 [Markdown](./Cheatsheets/Markdown.md)
