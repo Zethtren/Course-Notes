@@ -218,10 +218,10 @@ Cascading is a fundamental feature of CSS. The cascade algotrithm is at the
 
 4 Concepts:
 
-* [Origin](###Origin)
-* [Merge](###Merge)
-* [Inheritance](###Inheritance)
-* [Specificity](###Specificity)
+* [Origin](#origin)
+* [Merge](#merge)
+* [Inheritance](#inheritance)
+* [Specificity](#specificity)
 
 ### **Origin**
 
